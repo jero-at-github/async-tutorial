@@ -1,0 +1,46 @@
+<script>
+        
+    let generateRnd = () => Math.floor(Math.random() * 10) + 1;
+
+    /*
+    let b = new Promise(function(resolve, reject) {
+
+        // generate random number after 1 second
+        setTimeout(function() {
+
+            let result = generateRnd(); 
+            console.log("result:" + result);
+
+            // callback execution
+            resolve(result);  
+
+        }, 1000);
+    });    
+    */
+
+    let c = function(param = 0) {
+
+        return new Promise(function(resolve, reject) {
+
+            // generate random number after 1 second
+            setTimeout(function() {
+
+                let result = generateRnd(); 
+                console.log("result:" + result);
+
+                // callback execution
+                resolve(param + result);  
+
+            }, 1000);
+        });
+    }
+
+    /* ========= 
+        Execution 
+        ========= */
+    
+    c().then(c).then(c).then( (result)=> {
+        console.log("Final result:" + result);        
+    });
+        
+</script>
