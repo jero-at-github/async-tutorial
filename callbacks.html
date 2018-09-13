@@ -1,0 +1,66 @@
+<script>
+        
+    let generateRnd = () => Math.floor(Math.random() * 10) + 1;
+
+    var a = function() {
+
+        setTimeout(function() {
+
+            return generateRnd(); 
+        }, 1000);
+
+    }    
+     
+    let b = (myCallback) => {
+
+        // generate random number after 1 second
+        setTimeout(function() {
+
+            let result = generateRnd(); 
+            
+            // callback execution
+            myCallback(result);  
+                      
+        }, 1000);
+
+    }
+    
+       let c = (myCallback) => {
+
+        // generate random number after 1 second
+        setTimeout(function() {
+
+            let firstResult = generateRnd();    
+            console.log("First result: " + firstResult);         
+            
+            // generate random number after 1 second
+            setTimeout(function(firstResult) {
+
+                let secondResult = generateRnd();     
+                console.log("Second result: " + secondResult);  
+
+                let finalResult = firstResult + secondResult;
+                console.log("Final result: " + finalResult); 
+                
+                // callback execution
+                myCallback(finalResult);  
+
+            }, 1000, firstResult);
+
+        }, 1000);
+    }
+
+
+    /* ========= 
+        Execution 
+        ========= */
+    
+    let randomNumber = a();
+    console.log(randomNumber);        
+
+    b( (result) => {console.log(result)} );
+    c( (result) => {console.log(result)} );
+    
+
+        
+</script>
