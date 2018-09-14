@@ -39,8 +39,10 @@
         Execution 
         ========= */
     
-    c().then(c).then(c).then( (result)=> {
-        console.log("Final result:" + result);        
-    });
+    c().then(c).then(c).then(c).then(c).
+        then((result)=> {
+               console.log("Final result:" + result);                      
+            }
+        );
         
 </script>

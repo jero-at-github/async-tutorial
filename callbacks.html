@@ -25,50 +25,56 @@
 
     }
     
-    let c = (myCallback) => {
+    let c = (myCallback, previousRndNumber) => {
 
         // generate random number after 1 second
         setTimeout(function() {
 
-            let firstResult = generateRnd();    
-            console.log("First result: " + firstResult);         
-            
-            // generate random number after 1 second
-            setTimeout(function(firstResult) {
-
-                let secondResult = generateRnd();     
-                console.log("Second result: " + secondResult);  
-
-                secondResult += firstResult;
-
-                // generate random number after 1 second
-                setTimeout(function(secondResult) {
-
-                    let thirdResult = generateRnd();     
-                    console.log("Third result: " + thirdResult);  
-
-                    let finalResult = secondResult + thirdResult;
-                    console.log("Final result: " + finalResult); 
-                    
-                    // callback execution
-                    myCallback(finalResult);  
-
-                }, 1000, secondResult);
-
-            }, 1000, firstResult);
+            let rndNumber = generateRnd();    
+            console.log("rdnNumber: " + rndNumber);                     
+           
+            myCallback(rndNumber + previousRndNumber);                                           
 
         }, 1000);
     }
 
+    // pyramid of doom!
+    c((previousRndNumber) => {
+
+       c((previousRndNumber) => {
+
+            c((previousRndNumber) => {
+
+                c((previousRndNumber) => {
+
+                    c((previousRndNumber) => {
+
+                        console.log("Total: " + previousRndNumber);
+                        
+                    }, previousRndNumber);
+
+                }, previousRndNumber);
+
+            }, previousRndNumber);
+
+       }, previousRndNumber);
+
+    }, 0);
+        
 
     /* ========= 
         Execution 
         ========= */
     
-    let randomNumber = a();
-    console.log(randomNumber);        
+    //let randomNumber = a();
+    //console.log(randomNumber);        
 
     //b( (result) => {console.log(result)} );
-    //c( (result) => {console.log(result)} );    
+    /*
+    c( (result) => {
+
+        console.log("Total sum: " + result);        
+    });   
+    */ 
         
 </script>
