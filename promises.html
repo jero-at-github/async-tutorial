@@ -38,11 +38,22 @@
     /* ========= 
         Execution 
         ========= */
-    
+    /*
     c().then(c).then(c).then(c).then(c).
         then((result)=> {
                console.log("Final result:" + result);                      
             }
         );
+    */
+
+    let promiseArray = [];
+
+    for (var conta = 0; conta <= 4; conta ++) {
+        promiseArray.push( c() );
+    }
+    
+    Promise.all(promiseArray).then( (result)=> {
+        console.log(result);
+    });      
         
 </script>
