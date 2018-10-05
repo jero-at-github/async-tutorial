@@ -1,6 +1,4 @@
 
-
-
 /**
  * "var" is function scope
  */
