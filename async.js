@@ -11,6 +11,8 @@ let c = async function(param = 0, extra = 0) {
             let result = generateRnd(); 
             console.log("result:" + result);
 
+            //if (result > 5) reject("Value is greater than 5!");
+
             // callback execution
             resolve(param + result + extra);  
 
@@ -24,13 +26,18 @@ let c = async function(param = 0, extra = 0) {
 
 async function run() {
 
-    let res1 = await c();
-    let res2 = await c(res1, 2);        
-    let res3 = await c(res2);
-    let res4 = await c(res3);
-    let res5 = await c(res4);
-
-    console.log(res5);
+    try {
+        let res1 = await c();
+        let res2 = await c(res1, 2);        
+        let res3 = await c(res2);
+        let res4 = await c(res3);
+        let res5 = await c(res4);
+    
+        console.log(res5);
+    }
+    catch (ex) {
+        console.log("error: " + ex);
+    }
 };
 
 run();    
