@@ -1,5 +1,9 @@
 
 
+
+/**
+ * "var" is function scope
+ */
 function a() {    
     
     var myVar = 2;    
@@ -7,35 +11,13 @@ function a() {
     console.log(myVar);
 }    
 
+
+/**
+ * "var" c is closest function scope
+ */
 function b() {    
 
-    var myVar = 0;
-
-    // block 
-    {
-        var myVar = 1;
-    }
-
-    console.log(myVar);    
-
-    // block - if
-    if (true) {
-        var myVar = 2;
-    }
-
-    console.log(myVar);    
-
-    // block - for
-    for (counter = 1; counter == 1; counter ++) {
-        var myVar = 3;
-    }   
-    
-    console.log(myVar);    
-}    
-
-function c() {    
-
-    (function _c() {
+    (function _b() {
         
         var myVar = 2;        
     })();
@@ -43,17 +25,42 @@ function c() {
     console.log(myVar);
 }    
 
-function d() {    
+/**
+ * "var" is NOT block scope
+ */
+function c() {    
 
-    if (true) {
-        let myVar = 2;
+    var myVar = 0;
+
+    // block - #1
+    {
+        var myVar = 1;
     }
 
-    console.log(myVar);
+    console.log("Result after block 1: " + myVar);    
+
+    // block "if" - #2
+    if (true) {
+        var myVar = 2;
+    }
+
+    console.log("Result after block 2: " + myVar);   
+
+    // block "for" - #3
+    for (counter = 1; counter == 1; counter ++) {
+        var myVar = 3;
+    }   
+    
+    console.log("Result after block 3: " + myVar); 
 }    
 
-function e() {    
-    
+/**
+ * "let" is block and function scope
+ */
+function d() {    
+
+    let myVar = 1;
+
     if (true) {
         let myVar = 2;
     }
@@ -61,26 +68,42 @@ function e() {
     console.log(myVar);
 }   
 
+/**
+ * Redeclarations are allowed with "var"
+ */
+function e() {
 
-/* ========= 
-Execution 
-========= */
+    var myVar = "hello";
+    var myVar = "bye!";
 
-// Redeclarations are allowed with "let"
-//var a = "hello";
-//var a = "bye!";
+    console.log(myVar);
+}
 
-// Redeclarations are not allowed with "let"
-//let a = "hello";
-//let a = "bye!";
+/**
+ * Redeclarations are NOT allowed with "let"
+ */
+function f() {
 
-// Temporal dead zone (hoisting)
-function do_something() {
+    let myVar = "hello";
+    let myVar = "bye!";
 
-    console.log(bar); // undefined
-    console.log(foo); // ReferenceError
+    console.log(myVar);
+}
+
+/**
+ * Temporal dead zone (hoisting)
+ */
+function g() {
+    
+    console.log("The value of bar is: " + bar); // undefined
+    console.log("The value of foo is: " + foo); // ReferenceError
+
     var bar = 1;
     let foo = 2;
-  }
+}
 
-  do_something()
+/**
+ * EXECUTION
+ */
+
+g();
