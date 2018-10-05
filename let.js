@@ -103,5 +103,3 @@ function g() {
 /**
  * EXECUTION
  */
-
-g();

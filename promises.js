@@ -28,6 +28,8 @@ let c = function(param = 0, extra = 0) {
             let result = generateRnd(); 
             console.log("result:" + result);
 
+            if (result > 5) throw "Value is greater than 5!";
+
             // callback execution
             resolve(param + result + extra);  
 
@@ -48,7 +50,9 @@ c().
     then((result)=> {
             console.log("Final result:" + result);                      
         }
-    );
+    ).catch( (ex) => {
+        console.log("error! " + ex);
+    });
 
 
 /*

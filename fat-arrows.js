@@ -39,5 +39,3 @@ var d3 = myParam => myParam;
 /* ========= 
     Execution 
     ========= */
-
-console.log( d3("hello") );
