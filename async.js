@@ -20,10 +20,16 @@ let c = async function(param = 0, extra = 0) {
     });
 }
 
-/* ========= 
+/* ========== 
     Execution 
     ========= */   
+/*
 
+/**
+ * Using async await
+ * =================
+ */
+/*
 async function run() {
 
     try {
@@ -41,15 +47,94 @@ async function run() {
 };
 
 run();    
-
-/*
-let promiseArray = [];        
-
-for (var conta = 0; conta <= 4; conta ++) {
-    promiseArray.push( c() );
-}
-
-let allResult = await Promise.all(promiseArray);
-console.log(allResult);
 */
 
+
+/**
+ * Using Promise.all 
+ * =================
+ */
+/*
+async function awaitPromiseAll() {
+
+    let promiseArray = [];        
+
+    for (var conta = 0; conta <= 4; conta ++) {
+        promiseArray.push( c() );
+    }
+    
+    let allResult = await Promise.all(promiseArray);
+    console.log(allResult);    
+
+    //Promise.all(promiseArray).then(allResult=> {
+    //    console.log(allResult);        
+    //});    
+} 
+
+awaitPromiseAll();
+*/
+
+
+/**
+ * Using async-await in "for" loops
+ * ================================
+ */
+/*
+let myArray = [1,2,3];
+
+async function loop() {
+    
+    for (let conta = 0; conta < myArray.length; conta ++) {
+
+        console.log("Execution #" + myArray[conta]);
+        let result = await c();        
+    }
+};
+
+loop();
+*/
+
+
+/**
+ * Using async-await in "for-each" loops
+ * =====================================
+ */
+
+/*
+//https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach#Polyfill
+let myArray = [1,2,3];
+
+myArray.forEach(async element=> {
+
+    console.log("Execution #" + element);
+    let result = await c();     
+});
+
+  
+    //Equivalent call.  
+    //let res1 = c.call(); //we are not using "await" neither "then"
+    //console.log(res1);
+    //let res2 = c.call();
+    //console.log(res2);
+    //let res3 = c.call();
+    //console.log(res3);
+*/    
+
+
+/**
+ * Using async-await in "for-of" loops
+ * ===================================
+ */
+/*
+async function loopForOf() {
+
+    let myArray = [1,2,3];
+
+    for (let element of myArray) {
+        console.log("Execution #" + element);
+        let result = await c();     
+    }    
+}
+
+loopForOf();
+*/
