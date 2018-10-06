@@ -1,7 +1,7 @@
     
 let generateRnd = () => Math.floor(Math.random() * 10) + 1;   
 
-let c = async function(param = 0, extra = 0) {
+let getRndNumber = async function(param = 0, extra = 0) {
 
     return new Promise(function(resolve, reject) {
 
@@ -33,11 +33,11 @@ let c = async function(param = 0, extra = 0) {
 async function run() {
 
     try {
-        let res1 = await c();
-        let res2 = await c(res1, 2);        
-        let res3 = await c(res2);
-        let res4 = await c(res3);
-        let res5 = await c(res4);
+        let res1 = await getRndNumber();
+        let res2 = await getRndNumber(res1, 2);        
+        let res3 = await getRndNumber(res2);
+        let res4 = await getRndNumber(res3);
+        let res5 = await getRndNumber(res4);
     
         console.log(res5);
     }
@@ -60,7 +60,7 @@ async function awaitPromiseAll() {
     let promiseArray = [];        
 
     for (var conta = 0; conta <= 4; conta ++) {
-        promiseArray.push( c() );
+        promiseArray.push( getRndNumber() );
     }
     
     let allResult = await Promise.all(promiseArray);
@@ -87,7 +87,7 @@ async function loop() {
     for (let conta = 0; conta < myArray.length; conta ++) {
 
         console.log("Execution #" + myArray[conta]);
-        let result = await c();        
+        let result = await getRndNumber();        
     }
 };
 
@@ -107,16 +107,16 @@ let myArray = [1,2,3];
 myArray.forEach(async element=> {
 
     console.log("Execution #" + element);
-    let result = await c();     
+    let result = await getRndNumber();     
 });
 
   
     //Equivalent call.  
-    //let res1 = c.call(); //we are not using "await" neither "then"
+    //let res1 = getRndNumber.call(); //we are not using "await" neither "then"
     //console.log(res1);
-    //let res2 = c.call();
+    //let res2 = getRndNumber.call();
     //console.log(res2);
-    //let res3 = c.call();
+    //let res3 = getRndNumber.call();
     //console.log(res3);
 */    
 
@@ -132,7 +132,7 @@ async function loopForOf() {
 
     for (let element of myArray) {
         console.log("Execution #" + element);
-        let result = await c();     
+        let result = await getRndNumber();     
     }    
 }
 
