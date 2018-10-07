@@ -39,73 +39,45 @@ var d3 = myParam => myParam;
 /**
  * Lexical scoping (this) 
  */
-
 var testingThis = {
 
     greeting: "Hello",    
-    test: function() {
+    greet: function() {
 
-        console.log("The value of myExternalValue is " + this.greeting);
-        
-        function subFunction(that) {
-            console.log("The value of myExternalValue in the sub function is " + that.greeting);
-        }
-
-        let subFunction2 = () => {
-            console.log("The value of myExternalValue in the sub function is " + this.greeting);
-        }
-
-        subFunction(this);
-        subFunction2();
-
-        /*        
+        console.log("The value for my greetin is " + this.greeting);
+                      
+        // Let's try to use "this" in an function which is out of scope
         [1,2,3].forEach(function(element) {
 
             console.log(this.greeting + " number " + element);
-        });
-        */
-        
-        /*
+        });        
+
+        // Alternatives:
+
         // using a helper variable
         var that = this;
         [1,2,3].forEach(function(element) {
 
             console.log(that.greeting + " number " + element);
-        });
-        */  
-    
-        /*
+        });          
+            
         // using bind
         [1,2,3].forEach(function(element) {
 
             console.log(this.greeting + " number " + element);
-        }.bind(this));
-        */
+        }.bind(this));        
       
-        /*
+        
         // using fat arrows
         [1,2,3].forEach(element => {
 
             console.log(this.greeting + " number " + element);
         });
-        */
+        
     }    
 }
 
-//testingThis.test();
-
-
-var myValue = "hello";
-
-function testing() {
-    
-    //var myValue = "hello";
-    console.log(this.myValue);
-
-}
-
-testing();
-
+//testingThis.greet();
 
 
 
