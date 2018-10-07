@@ -20,7 +20,7 @@ function b() {
         var myVar = 2;        
     })();
     
-    console.log(myVar);
+    console.log(myVar); // result: myVar is not defined
 }    
 
 /**
@@ -50,6 +50,8 @@ function c() {
     }   
     
     console.log("Result after block 3: " + myVar); 
+
+    //result: 0, 1, 2, 3    
 }    
 
 /**
@@ -63,7 +65,7 @@ function d() {
         let myVar = 2;
     }
 
-    console.log(myVar);
+    console.log(myVar); // result: 1
 }   
 
 /**
@@ -74,7 +76,7 @@ function e() {
     var myVar = "hello";
     var myVar = "bye!";
 
-    console.log(myVar);
+    console.log(myVar); // result: bye
 }
 
 /**
@@ -85,7 +87,7 @@ function f() {
     let myVar = "hello";
     let myVar = "bye!";
 
-    console.log(myVar);
+    console.log(myVar); // result: error
 }
 
 /**
@@ -93,8 +95,8 @@ function f() {
  */
 function g() {
     
-    console.log("The value of bar is: " + bar); // undefined
-    console.log("The value of foo is: " + foo); // ReferenceError
+    console.log("The value of bar is: " + bar); // undefined, var uses hoisting
+    console.log("The value of foo is: " + foo); // ReferenceError, let doesn't use hoisting
 
     var bar = 1;
     let foo = 2;
