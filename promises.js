@@ -2,6 +2,9 @@
     
 let generateRnd = () => Math.floor(Math.random() * 10) + 1;
 
+/**
+ * Declaring a Promise (automatically executed)
+ */
 /*
 let b = new Promise(function(resolve, reject) {
 
@@ -18,7 +21,10 @@ let b = new Promise(function(resolve, reject) {
 });    
 */
 
-let c = function(param = 0, extra = 0) {
+/**
+ * Wrapping a Promise in a function
+ */
+let getRndNumber = function(param = 0, extra = 0) {
 
     return new Promise(function(resolve, reject) {
 
@@ -40,13 +46,13 @@ let c = function(param = 0, extra = 0) {
 /* ========= 
     Execution 
     ========= */   
-c().
-    then(c).
+getRndNumber().
+    then(getRndNumber).
     then( (result) => {
-        return c(result, 2)
+        return getRndNumber(result, 2)
     }).
-    then(c).
-    then(c).
+    then(getRndNumber).
+    then(getRndNumber).
     then((result)=> {
             console.log("Final result:" + result);                      
         }
@@ -59,7 +65,7 @@ c().
 let promiseArray = [];
 
 for (var conta = 0; conta <= 4; conta ++) {
-    promiseArray.push( c() );
+    promiseArray.push( getRndNumber() );
 }
 
 Promise.all(promiseArray).then( (result)=> {
