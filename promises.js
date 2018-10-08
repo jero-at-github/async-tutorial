@@ -34,7 +34,7 @@ let getRndNumber = function(param = 0, extra = 0) {
             let result = generateRnd(); 
             console.log("result:" + result);
 
-            //if (result > 5) reject("Value is greater than 5!");
+            //if (result > 0) reject("Value is greater than 5!");
 
             // callback execution
             resolve(param + result + extra);  
@@ -46,11 +46,14 @@ let getRndNumber = function(param = 0, extra = 0) {
 /* ========= 
     Execution 
     ========= */   
-getRndNumber().
-    then(getRndNumber).
-    then( (result) => {
-        return getRndNumber(result, 2)
-    }).
+getRndNumber().       
+    then( 
+        (result) => {
+            return getRndNumber(result, 2)
+        },
+        (error) => {
+            console.log("Warning! " + error);
+        }).    
     then(getRndNumber).
     then(getRndNumber).
     then((result)=> {
