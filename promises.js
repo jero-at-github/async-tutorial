@@ -6,7 +6,7 @@ let generateRnd = () => Math.floor(Math.random() * 10) + 1;
  * Declaring a Promise (automatically executed)
  */
 /*
-let b = new Promise(function(resolve, reject) {
+let getRndNumber = new Promise(function(resolve, reject) {
 
     // generate random number after 1 second
     setTimeout(function() {
