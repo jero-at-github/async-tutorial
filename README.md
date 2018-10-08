@@ -9,3 +9,13 @@ Topics:
 
 Glossary: 
 *Node.js: JavaScript runtime built on Chrome's V8 JavaScript engine
+
+Versions:
+ES (ECMAScript)
+ECMA is an organization that standardizes information
+JavaScript implements ECMAScript and builds on top of it.
+
+let: ECMAScript ES6 (2015)
+fat arrows: ES6 (2015)
+promises: ES6 (2015)
+async-await: ES8 (2017)
